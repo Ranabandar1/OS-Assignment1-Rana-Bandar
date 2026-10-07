@@ -35,6 +35,11 @@ class Process implements Runnable {
     // Feature 3: Waiting Time Tracking
     private long creationTime;
     private long waitingTime;
+    private long lastReadyQueueArrivalTime;
+
+    public void setReadyQueueArrivalTime() {
+        this.lastReadyQueueArrivalTime = System.currentTimeMillis();
+    }
 
     public Process(String name, int burstTime, int timeQuantum) {
         this.name = name;
@@ -50,6 +55,10 @@ class Process implements Runnable {
     // This method will be called when the thread for this process is started
     @Override
     public void run() {
+        // Feature 3 Update: Accumulate exact time spent waiting in ready queue
+        if (lastReadyQueueArrivalTime > 0) {
+            this.waitingTime += (System.currentTimeMillis() - lastReadyQueueArrivalTime);
+        }
         // Simulate running for either the time quantum or remaining time, whichever is
         // smaller
         int runTime = Math.min(timeQuantum, remainingTime); // Run for the smaller of the two times
@@ -82,7 +91,6 @@ class Process implements Runnable {
 
         remainingTime -= runTime; // Deduct the run time from the remaining time
 
-        waitingTime = System.currentTimeMillis() - creationTime; // Feature 3: Calculate waiting time
         int overallProgress = (int) (((double) (burstTime - remainingTime) / burstTime) * 100);
         String overallProgressBar = createProgressBar(overallProgress, 20);
 
