@@ -292,7 +292,7 @@ The assignment struck a perfect mix between theoretical operating system concept
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+While a thread is a lightweight unit of execution that shares heap memory with other threads inside the same parent process, a process is an autonomous execution program with its own isolated memory address space. Because Java threads have far reduced construction overhead and enable quick communication via shared object references, we used them in SchedulerSimulation.java rather than distinct operating system processes. It is crucial to recognize that our code's custom Java class, Process, is a simulated process object that is actually run concurrently by a real JVM thread that was generated using new Thread(process) inside addProcessToQueue(). Our scheduler simulation was able to handle shared data structures, such the ready queue, without the need for intricate inter-process communication (IPC) procedures thanks to the use of threads.
 
 ## Question 2: Ready Queue Behavior
 
@@ -302,17 +302,24 @@ The assignment struck a perfect mix between theoretical operating system concept
 >
 > 💡 **TIP:** Pick a process with a large burst time (e.g., more than 2 × time quantum) and count how many "added to ready queue" lines it has after the first one. Search your console for its name (e.g., `P3`).
 
-**Your Answer:** *(3-5 sentences)*
+**Your Answer:**When a process takes longer to complete than the allotted time quantum in Round-Robin scheduling, the scheduler preempts its execution, context-switches CPU control, and adds the process back to the back of the ready queue. Because it keeps long-running processes from monopolizing the CPU and guaranties that each process receives regular execution slices, re-queueing is essential for system fairness. Process P1 had an initial burst time of 6854 ms with a time quantum of 5000 ms in my simulation run. As a result, it was re-queued once with a remaining burst duration of 1854 ms.
 
-[Write your answer here.]
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+P1 executing quantum [5000ms] 
+  Quantum progress: [███████████████] 100%
+  P1 completed quantum 5000ms │ Overall progress: [██████████████░░░░░░] 72%
+     Remaining time: 1854ms
+  P1 yields CPU for context switch
+
+  P1 (Priority: 2) enters the ready queue │ Burst time: 6854ms
+┌─ Ready Queue ─────────────────────────────────────────────────────────────────
+│ [P3   P4   P5   P6   P7   P8   P9   P10   P11   P12   P13   P14   P1]
+└───────────────────────────────────────────────────────────────────────────────
 ```
 
-**Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+**Explanation of example:**This output snippet shows that process P1 is operating for the full 5000 ms permitted time quantum. The scheduler recorded a context switch, gave up CPU control, and appended P1 back to the end of the ready queue behind process P14 so that P2 could run next because its remaining burst time was 1854 ms.
 
 ## Question 3: Thread Lifecycle
 
@@ -320,17 +327,17 @@ Example from my output:
 
 > 💡 **TIP:** Follow P1 through the code: created in `addProcessToQueue()`, started in the scheduler loop, sleeping inside `run()`, and the main thread waiting on `join()`. Remember that **the main thread waits** on `join()`, while **P1's thread sleeps** in `Thread.sleep()`. Be clear about which thread is in which state.
 
-**Your Answer:** *(3-5 sentences overall; one short explanation per state)*
+**Your Answer:** 
 
-1. **New**: [When is P1 in the New state?]
+1.New: Process P1 enters the New state when its instance is created in addProcessToQueue() via Process P1 = new Process("P1", 6854, 2) before thread initialization.
 
-2. **Runnable**: [When does P1 become Runnable?]
+2.Runnable: P1 transitions to the Runnable state when Thread.start() is invoked, adding its thread to the ready queue where it awaits CPU assignment.
 
-3. **Running**: [When is P1 Running?]
+3.Running: P1 reaches the Running state when the scheduler thread allocates CPU time to it and executes its run() method logic for a 5000ms quantum.
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4.Waiting: P1 enters the Waiting state when executing Thread.sleep() to simulate CPU execution time during its quantum, or while yielding control during a context switch.
 
-5. **Terminated**: [When is P1 Terminated?]
+5.Terminated: P1 reaches the Terminated state when its remaining burst time drops to 0ms and its run() method completes execution after its final execution slice.
 
 ## Question 4: Real-World Applications
 
@@ -338,34 +345,34 @@ Example from my output:
 
 > 💡 **TIP:** Relate each example back to your simulation: what plays the role of the "process", the "time quantum" and the "context switch" in that scenario?
 
-**Your Answer:** *(3-5 sentences per example)*
+**Your Answer:** 
 
-### Example 1 (operating-system level): [Name of scenario]
-
-**Description**:
-[Describe the real-world scenario.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
-
-### Example 2: [Name of application/scenario]
+### Example 1 (operating-system level):OS Multi-Tasking CPU Scheduler
 
 **Description**:
-[Describe the real-world scenario or application.]
+A contemporary desktop operating system scheduler allocates CPU core processing time among concurrent user applications, including word processors, web browsers, and background system services.
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+Allocating equal time quantums to running apps prevents any single application from starving other active system processes or freezing the user interface.
+
+### Example 2:Web Application Server Request Handler
+
+**Description**:
+An enterprise HTTP web server (such as Apache Tomcat) uses a managed thread pool to process thousands of concurrent client API requests.
+
+**Why Round-Robin works well here**:
+Time-sliced thread allocation ensures consistent response latency across incoming requests, preventing lengthy database query tasks from completely blocking fast client read operations.
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.The distinction between OS threads, processes, and Java simulated runnable process objects.
+2.How time quantums, preemptive context switching, and ready queue re-queueing ensure fairness in Round-Robin scheduling.
+3.The exact method calls (`Thread.start()`, `Thread.sleep()`, `Thread.join()`) that trigger state transitions across the thread lifecycle.
 
 **Concepts I need to study more:**
-1.
-2.
+1.Advanced thread synchronization primitives (such as semaphores, mutexes, and atomic variables) to prevent race conditions in concurrent data structures.
+2.Real-time CPU scheduling algorithms (such as Earliest Deadline First) and deadlock detection strategies in operating system kernels.
 
 ---
 
