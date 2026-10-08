@@ -235,9 +235,8 @@
 
 > 💡 **TIP:** Talk about thread creation (`Runnable`, `Thread.start()`), waiting with `Thread.join()`, simulating work with `Thread.sleep()`, and what surprised you.
 
-**Your Answer:** *(5-7 sentences)*
+**Your Answer:** I now have a thorough understanding of how multithreading functions in a Java operating system simulation thanks to this project. I discovered that process entities can be represented as `Runnable` tasks and carried out autonomously by use of specialized instances of `Thread`. I learned how `Thread.sleep()` accurately simulates CPU execution burst times during active simulation runs by putting time-slicing logic into practice. I learned how to carefully manage shared resources, such the ready queue, in order to preserve execution order from working with thread synchronization. The way a master controlling thread synchronizes and waits for worker threads to finish execution was also made clear by utilizing `Thread.join()`. Additionally, I noticed that during thread transitions, context switching adds minor execution state management overheads. All things considered, this project connected practical Java concurrency experience with theoretical CPU scheduling notions.
 
-[Write your answer here.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,7 +244,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Implementing Feature 3 to precisely track waiting times over several quantum preemptions was the most difficult aspect of this task. It was difficult to capture cumulative waiting time without accounting for active running time since processes frequently cede CPU execution during Round-Robin scheduling. It was necessary to carefully trace execution routes in order to debug timestamp logic while maintaining the instructor's base code logic. ensuring that the system captures time intervals.The fact that currentTimeMillis() maintained accuracy throughout thread state changes created additional challenges. It required careful logical validation to match waiting time metrics with overall turnaround time estimations. Examining queue insertion sites and tracking thread execution step-by-step were necessary to overcome this. In the end, verifying the output of the summary table guarantyd the accuracy of the waiting and turnaround time computations.
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -253,7 +252,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+By methodically tracking the thread execution flow and adding diagnostic print statements during state transitions, I was able to overcome these difficulties. I carefully examined how process worker threads interacted with shared queue structures after rereading the main assignment requirements. I confirmed timing calculations over several simulation runs by using `System.currentTimeMillis()` to capture timestamps at queue entry points. The program's consistency in accumulated waiting durations was verified by testing it under different time quantum values. My comprehension of thread states and synchronization mechanisms was strengthened by going over the fundamental Java threading documentation. Additionally, I divided complicated code changes into manageable chunks and verified output behavior following each alteration. I was able to obtain accurate findings while preserving the instructor's initial framework logic through methodical testing and verification.
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -261,19 +260,19 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+The concepts of multithreading are fundamental to desktop program designs, web application servers, and contemporary enterprise systems. For instance, worker thread pools are used by web application servers such as Apache Tomcat to manage incoming client HTTP requests concurrently without causing the server to become unavailable. Concurrent threads are used by database management systems to carry out separate query transactions concurrently while maintaining concurrency locks. Background worker threads manage disk I/O and network requests in desktop and mobile applications to keep the user interface responsive. Network synchronization, graphics rendering, and physics calculations are all handled in parallel by different threads in multiplayer game engines. Time-slicing techniques are used by operating system schedulers to provide numerous user programs with seamless access to processor resources. Deadlocks are avoided and overall resource utilization is maximized by comprehending thread scheduling and resource synchronization.
 
 ### Optional: What would you like to learn more about?
+Semaphores, mutexes, atomic variables, and deadlock detection techniques are examples of sophisticated concurrency primitives that I would like to investigate in real-time operating system kernels.
 
-[Any topics related to threading or operating systems that you're curious about?]
 
 ### Optional: How confident do you feel about multithreading concepts now?
+Intermediate. Although more practice is needed for complicated concurrent data structure synchronization, I am confident in my understanding of thread lifecycles, execution states, and queue scheduling techniques.
 
-[Beginner / Intermediate / Confident. What do you understand well? What needs more practice?]
 
 ### Optional: Feedback on the assignment
+The assignment struck a perfect mix between theoretical operating system concepts and actual Java multithreading implementation. It was really effective and practical.
 
-[Any comments? Was it helpful? Too easy or hard? Suggestions?]
 
 ---
 
