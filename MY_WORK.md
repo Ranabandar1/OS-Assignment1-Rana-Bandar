@@ -129,81 +129,85 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 5, 2026 at 02:30 PM]
+**What I did**:Set up repository details and implemented process priority tracking.
 
-**Details**:
+**Details**:In order to generate random numbers, the simulation header was updated with the Student ID (446051423). Additionally, process priority tracking was implemented after ready queue entry.
 
-**Challenges**:
+**Challenges**:managing output from priority displays without interfering with current process scheduling loops.
 
-**Solution**:
+**Solution**:Conditional logging logic was added to format and show priority levels as processes join the ready queue..
 
-**Time spent**:
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:2 hour
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 6, 2026 at 04:15 PM]
+**What I did**:Implemented context switch counter and waiting time tracking feature.
 
-**Details**:
+**Details**:In order to track overall context switches and document individual process waiting durations in a final summary table, metrics calculation logic was added to `SchedulerSimulation.java`.
 
-**Challenges**:
+**Challenges**:precisely calculating the total process waiting time over several Round-Robin preemptive quantum slices.
 
-**Solution**:
+**Solution**:Waiting time was determined by subtracting the actual execution burst time from the entire turnaround time.
 
-**Time spent**:
-
----
-
-### Entry 4 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**: 3 hour 30 minutes
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 7, 2026 at 05:45 PM]
+**What I did**:The waiting time calculation logic was corrected, and the priority log output formatting was updated.
 
-**Details**:
+**Details**:Boundary cases in the waiting time summing logic were fixed, and execution logging strings were modified to properly show process priority.
 
-**Challenges**:
+**Challenges**:ensuring that thread state execution details are not cluttered in the terminal output of priority logs.
 
-**Solution**:
 
-**Time spent**:
+**Solution**:verified output consistency during complete simulation test runs and standardized log line structures.
+
+**Time spent**:2 hour
 
 ---
 
-### Entry 6 - [Optional - Date and Time]
-**What I did**:
+### Entry 4 - [October 8, 2026 at 07:10 PM]
+**What I did**:examined multi-threading principles and drafted answers for Part B (Reflection).
 
-**Details**:
+**Details**:created thorough justifications for system modularity, thread scheduling synchronization, and software design in `MY_WORK.md`.
 
-**Challenges**:
+**Challenges**:fulfilling all necessary requirements while adhering carefully to the acceptable response length limit of five to seven sentences each question.
 
-**Solution**:
+**Solution**:Each reflection point was directly organized around object-oriented concepts, thread lifecycle stages, and quantum mechanics.
 
-**Time spent**:
+**Time spent**:4 hour
+
+---
+
+### Entry 5 - [October 9, 2026 at 02:20 AM]
+**What I did**:completed the technical responses for Part C and reviewed the final submission.
+
+**Details**:eliminated any remaining placeholder guidelines, examined process state transitions and output traces for Part C questions, and confirmed that the final submission checklist in `MY_WORK.md` had been completed.
+
+
+**Challenges**:ensuring that all technical language requirements and phrase count restrictions (3–5 sentences per example for Part C) were fulfilled.
+.
+
+**Solution**:Verified output trace values (`P1` burst time `6854ms`) and conducted a line-by-line assessment in accordance with assignment standards.
+
+**Time spent**: 3 hour
+
+---
+
+### Entry 6 - [October 9, 2026 at 5:30 AM]
+**What I did**:All entries in the Development Log have been updated and completed.
+
+**Details**:conducted final formatting checks in `MY_WORK.md`, confirmed accurate date and time formatting across entries 1 through 6, and synchronized all development log entries with actual repository commit timestamps.
+
+
+**Challenges**:Accurately matching old development log entries to precise time logs and actual commit dates.
+
+**Solution**:GitHub commit history data were cross-referenced, and each entry was updated with relevant tasks, descriptions, challenges, solutions, and time spent.
+
+**Time spent**:2 hour
 
 ---
 
@@ -211,13 +215,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: 5 days [16 hours 30 minutes total]
 
-**Most challenging part**:
+**Most challenging part**:Preemptive thread synchronization in Java is managed while precisely monitoring context switch counters and multi-quantum process waiting durations without changing the fundamental Round-Robin scheduling algorithm.
 
-**Most interesting learning**:
+**Most interesting learning**:developing a comprehensive understanding of how theoretical Operating System concepts like CPU burst execution, context switching overhead, and thread state transitions map directly to real-world Java multi-threading structures (`Thread.sleep()`, thread lifecycles, and synchronization).
 
-**What I would do differently next time**:
+**What I would do differently next time**:To make it easier to verify process state transitions step-by-step before introducing UI progress bars, set up an automated testing and trace logging module earlier in the development cycle.
 
 ---
 
@@ -235,9 +239,8 @@
 
 > 💡 **TIP:** Talk about thread creation (`Runnable`, `Thread.start()`), waiting with `Thread.join()`, simulating work with `Thread.sleep()`, and what surprised you.
 
-**Your Answer:** *(5-7 sentences)*
+**Your Answer:** I now have a thorough understanding of how multithreading functions in a Java operating system simulation thanks to this project. I discovered that process entities can be represented as `Runnable` tasks and carried out autonomously by use of specialized instances of `Thread`. I learned how `Thread.sleep()` accurately simulates CPU execution burst times during active simulation runs by putting time-slicing logic into practice. I learned how to carefully manage shared resources, such the ready queue, in order to preserve execution order from working with thread synchronization. The way a master controlling thread synchronizes and waits for worker threads to finish execution was also made clear by utilizing `Thread.join()`. Additionally, I noticed that during thread transitions, context switching adds minor execution state management overheads. All things considered, this project connected practical Java concurrency experience with theoretical CPU scheduling notions.
 
-[Write your answer here.]
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,7 +248,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+Implementing Feature 3 to precisely track waiting times over several quantum preemptions was the most difficult aspect of this task. It was difficult to capture cumulative waiting time without accounting for active running time since processes frequently cede CPU execution during Round-Robin scheduling. It was necessary to carefully trace execution routes in order to debug timestamp logic while maintaining the instructor's base code logic. ensuring that the system captures time intervals.The fact that currentTimeMillis() maintained accuracy throughout thread state changes created additional challenges. It required careful logical validation to match waiting time metrics with overall turnaround time estimations. Examining queue insertion sites and tracking thread execution step-by-step were necessary to overcome this. In the end, verifying the output of the summary table guarantyd the accuracy of the waiting and turnaround time computations.
 
 ## Question 3: How did you overcome the challenges you faced?
 
@@ -253,7 +256,7 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+By methodically tracking the thread execution flow and adding diagnostic print statements during state transitions, I was able to overcome these difficulties. I carefully examined how process worker threads interacted with shared queue structures after rereading the main assignment requirements. I confirmed timing calculations over several simulation runs by using `System.currentTimeMillis()` to capture timestamps at queue entry points. The program's consistency in accumulated waiting durations was verified by testing it under different time quantum values. My comprehension of thread states and synchronization mechanisms was strengthened by going over the fundamental Java threading documentation. Additionally, I divided complicated code changes into manageable chunks and verified output behavior following each alteration. I was able to obtain accurate findings while preserving the instructor's initial framework logic through methodical testing and verification.
 
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
@@ -261,19 +264,19 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
+The concepts of multithreading are fundamental to desktop program designs, web application servers, and contemporary enterprise systems. For instance, worker thread pools are used by web application servers such as Apache Tomcat to manage incoming client HTTP requests concurrently without causing the server to become unavailable. Concurrent threads are used by database management systems to carry out separate query transactions concurrently while maintaining concurrency locks. Background worker threads manage disk I/O and network requests in desktop and mobile applications to keep the user interface responsive. Network synchronization, graphics rendering, and physics calculations are all handled in parallel by different threads in multiplayer game engines. Time-slicing techniques are used by operating system schedulers to provide numerous user programs with seamless access to processor resources. Deadlocks are avoided and overall resource utilization is maximized by comprehending thread scheduling and resource synchronization.
 
 ### Optional: What would you like to learn more about?
+Semaphores, mutexes, atomic variables, and deadlock detection techniques are examples of sophisticated concurrency primitives that I would like to investigate in real-time operating system kernels.
 
-[Any topics related to threading or operating systems that you're curious about?]
 
 ### Optional: How confident do you feel about multithreading concepts now?
+Intermediate. Although more practice is needed for complicated concurrent data structure synchronization, I am confident in my understanding of thread lifecycles, execution states, and queue scheduling techniques.
 
-[Beginner / Intermediate / Confident. What do you understand well? What needs more practice?]
 
 ### Optional: Feedback on the assignment
+The assignment struck a perfect mix between theoretical operating system concepts and actual Java multithreading implementation. It was really effective and practical.
 
-[Any comments? Was it helpful? Too easy or hard? Suggestions?]
 
 ---
 
@@ -293,7 +296,7 @@
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+While a thread is a lightweight unit of execution that shares heap memory with other threads inside the same parent process, a process is an autonomous execution program with its own isolated memory address space. Because Java threads have far reduced construction overhead and enable quick communication via shared object references, we used them in SchedulerSimulation.java rather than distinct operating system processes. It is crucial to recognize that our code's custom Java class, Process, is a simulated process object that is actually run concurrently by a real JVM thread that was generated using new Thread(process) inside addProcessToQueue(). Our scheduler simulation was able to handle shared data structures, such the ready queue, without the need for intricate inter-process communication (IPC) procedures thanks to the use of threads.
 
 ## Question 2: Ready Queue Behavior
 
@@ -303,17 +306,24 @@
 >
 > 💡 **TIP:** Pick a process with a large burst time (e.g., more than 2 × time quantum) and count how many "added to ready queue" lines it has after the first one. Search your console for its name (e.g., `P3`).
 
-**Your Answer:** *(3-5 sentences)*
+**Your Answer:**When a process takes longer to complete than the allotted time quantum in Round-Robin scheduling, the scheduler preempts its execution, context-switches CPU control, and adds the process back to the back of the ready queue. Because it keeps long-running processes from monopolizing the CPU and guaranties that each process receives regular execution slices, re-queueing is essential for system fairness. Process P1 had an initial burst time of 6854 ms with a time quantum of 5000 ms in my simulation run. As a result, it was re-queued once with a remaining burst duration of 1854 ms.
 
-[Write your answer here.]
 
 Example from my output:
 ```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
+P1 executing quantum [5000ms] 
+  Quantum progress: [███████████████] 100%
+  P1 completed quantum 5000ms │ Overall progress: [██████████████░░░░░░] 72%
+     Remaining time: 1854ms
+  P1 yields CPU for context switch
+
+  P1 (Priority: 2) enters the ready queue │ Burst time: 6854ms
+┌─ Ready Queue ─────────────────────────────────────────────────────────────────
+│ [P3   P4   P5   P6   P7   P8   P9   P10   P11   P12   P13   P14   P1]
+└───────────────────────────────────────────────────────────────────────────────
 ```
 
-**Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
+**Explanation of example:**This output snippet shows that process P1 is operating for the full 5000 ms permitted time quantum. The scheduler recorded a context switch, gave up CPU control, and appended P1 back to the end of the ready queue behind process P14 so that P2 could run next because its remaining burst time was 1854 ms.
 
 ## Question 3: Thread Lifecycle
 
@@ -321,17 +331,17 @@ Example from my output:
 
 > 💡 **TIP:** Follow P1 through the code: created in `addProcessToQueue()`, started in the scheduler loop, sleeping inside `run()`, and the main thread waiting on `join()`. Remember that **the main thread waits** on `join()`, while **P1's thread sleeps** in `Thread.sleep()`. Be clear about which thread is in which state.
 
-**Your Answer:** *(3-5 sentences overall; one short explanation per state)*
+**Your Answer:** 
 
-1. **New**: [When is P1 in the New state?]
+1.New: Process P1 enters the New state when its instance is created in addProcessToQueue() via Process P1 = new Process("P1", 6854, 2) before thread initialization.
 
-2. **Runnable**: [When does P1 become Runnable?]
+2.Runnable: P1 transitions to the Runnable state when Thread.start() is invoked, adding its thread to the ready queue where it awaits CPU assignment.
 
-3. **Running**: [When is P1 Running?]
+3.Running: P1 reaches the Running state when the scheduler thread allocates CPU time to it and executes its run() method logic for a 5000ms quantum.
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4.Waiting: P1 enters the Waiting state when executing Thread.sleep() to simulate CPU execution time during its quantum, or while yielding control during a context switch.
 
-5. **Terminated**: [When is P1 Terminated?]
+5.Terminated: P1 reaches the Terminated state when its remaining burst time drops to 0ms and its run() method completes execution after its final execution slice.
 
 ## Question 4: Real-World Applications
 
@@ -339,34 +349,34 @@ Example from my output:
 
 > 💡 **TIP:** Relate each example back to your simulation: what plays the role of the "process", the "time quantum" and the "context switch" in that scenario?
 
-**Your Answer:** *(3-5 sentences per example)*
+**Your Answer:** 
 
-### Example 1 (operating-system level): [Name of scenario]
-
-**Description**:
-[Describe the real-world scenario.]
-
-**Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
-
-### Example 2: [Name of application/scenario]
+### Example 1 (operating-system level):OS Multi-Tasking CPU Scheduler
 
 **Description**:
-[Describe the real-world scenario or application.]
+A contemporary desktop operating system scheduler allocates CPU core processing time among concurrent user applications, including word processors, web browsers, and background system services.
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+Allocating equal time quantums to running apps prevents any single application from starving other active system processes or freezing the user interface.
+
+### Example 2:Web Application Server Request Handler
+
+**Description**:
+An enterprise HTTP web server (such as Apache Tomcat) uses a managed thread pool to process thousands of concurrent client API requests.
+
+**Why Round-Robin works well here**:
+Time-sliced thread allocation ensures consistent response latency across incoming requests, preventing lengthy database query tasks from completely blocking fast client read operations.
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.The distinction between OS threads, processes, and Java simulated runnable process objects.
+2.How time quantums, preemptive context switching, and ready queue re-queueing ensure fairness in Round-Robin scheduling.
+3.The exact method calls (`Thread.start()`, `Thread.sleep()`, `Thread.join()`) that trigger state transitions across the thread lifecycle.
 
 **Concepts I need to study more:**
-1.
-2.
+1.Advanced thread synchronization primitives (such as semaphores, mutexes, and atomic variables) to prevent race conditions in concurrent data structures.
+2.Real-time CPU scheduling algorithms (such as Earliest Deadline First) and deadlock detection strategies in operating system kernels.
 
 ---
 
