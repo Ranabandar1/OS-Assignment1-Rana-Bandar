@@ -346,7 +346,7 @@ public class SchedulerSimulation {
 
         // Add the thread to the ready queue
         processQueue.add(thread);
-
+        process.setReadyQueueArrivalTime();
         // Map the thread to the process, so we can track the process associated with
         // each thread
         processMap.put(thread, process);
