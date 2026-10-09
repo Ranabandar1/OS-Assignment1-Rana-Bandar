@@ -129,81 +129,85 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
-**What I did**:
+### Entry 1 - [October 5, 2026 at 02:30 PM]
+**What I did**:Set up repository details and implemented process priority tracking.
 
-**Details**:
+**Details**:In order to generate random numbers, the simulation header was updated with the Student ID (446051423). Additionally, process priority tracking was implemented after ready queue entry.
 
-**Challenges**:
+**Challenges**:managing output from priority displays without interfering with current process scheduling loops.
 
-**Solution**:
+**Solution**:Conditional logging logic was added to format and show priority levels as processes join the ready queue..
 
-**Time spent**:
-
----
-
-### Entry 2 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**:2 hour
 
 ---
 
-### Entry 3 - [Date and Time]
-**What I did**:
+### Entry 2 - [October 6, 2026 at 04:15 PM]
+**What I did**:Implemented context switch counter and waiting time tracking feature.
 
-**Details**:
+**Details**:In order to track overall context switches and document individual process waiting durations in a final summary table, metrics calculation logic was added to `SchedulerSimulation.java`.
 
-**Challenges**:
+**Challenges**:precisely calculating the total process waiting time over several Round-Robin preemptive quantum slices.
 
-**Solution**:
+**Solution**:Waiting time was determined by subtracting the actual execution burst time from the entire turnaround time.
 
-**Time spent**:
-
----
-
-### Entry 4 - [Date and Time]
-**What I did**:
-
-**Details**:
-
-**Challenges**:
-
-**Solution**:
-
-**Time spent**:
+**Time spent**: 3 hour 30 minutes
 
 ---
 
-### Entry 5 - [Date and Time]
-**What I did**:
+### Entry 3 - [October 7, 2026 at 05:45 PM]
+**What I did**:The waiting time calculation logic was corrected, and the priority log output formatting was updated.
 
-**Details**:
+**Details**:Boundary cases in the waiting time summing logic were fixed, and execution logging strings were modified to properly show process priority.
 
-**Challenges**:
+**Challenges**:ensuring that thread state execution details are not cluttered in the terminal output of priority logs.
 
-**Solution**:
 
-**Time spent**:
+**Solution**:verified output consistency during complete simulation test runs and standardized log line structures.
+
+**Time spent**:2 hour
 
 ---
 
-### Entry 6 - [Optional - Date and Time]
-**What I did**:
+### Entry 4 - [October 8, 2026 at 07:10 PM]
+**What I did**:examined multi-threading principles and drafted answers for Part B (Reflection).
 
-**Details**:
+**Details**:created thorough justifications for system modularity, thread scheduling synchronization, and software design in `MY_WORK.md`.
 
-**Challenges**:
+**Challenges**:fulfilling all necessary requirements while adhering carefully to the acceptable response length limit of five to seven sentences each question.
 
-**Solution**:
+**Solution**:Each reflection point was directly organized around object-oriented concepts, thread lifecycle stages, and quantum mechanics.
 
-**Time spent**:
+**Time spent**:4 hour
+
+---
+
+### Entry 5 - [October 9, 2026 at 02:20 AM]
+**What I did**:completed the technical responses for Part C and reviewed the final submission.
+
+**Details**:eliminated any remaining placeholder guidelines, examined process state transitions and output traces for Part C questions, and confirmed that the final submission checklist in `MY_WORK.md` had been completed.
+
+
+**Challenges**:ensuring that all technical language requirements and phrase count restrictions (3–5 sentences per example for Part C) were fulfilled.
+.
+
+**Solution**:Verified output trace values (`P1` burst time `6854ms`) and conducted a line-by-line assessment in accordance with assignment standards.
+
+**Time spent**: 3 hour
+
+---
+
+### Entry 6 - [October 9, 2026 at 5:30 AM]
+**What I did**:All entries in the Development Log have been updated and completed.
+
+**Details**:conducted final formatting checks in `MY_WORK.md`, confirmed accurate date and time formatting across entries 1 through 6, and synchronized all development log entries with actual repository commit timestamps.
+
+
+**Challenges**:Accurately matching old development log entries to precise time logs and actual commit dates.
+
+**Solution**:GitHub commit history data were cross-referenced, and each entry was updated with relevant tasks, descriptions, challenges, solutions, and time spent.
+
+**Time spent**:2 hour
 
 ---
 
@@ -211,13 +215,13 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: 5 days [16 hours 30 minutes total]
 
-**Most challenging part**:
+**Most challenging part**:Preemptive thread synchronization in Java is managed while precisely monitoring context switch counters and multi-quantum process waiting durations without changing the fundamental Round-Robin scheduling algorithm.
 
-**Most interesting learning**:
+**Most interesting learning**:developing a comprehensive understanding of how theoretical Operating System concepts like CPU burst execution, context switching overhead, and thread state transitions map directly to real-world Java multi-threading structures (`Thread.sleep()`, thread lifecycles, and synchronization).
 
-**What I would do differently next time**:
+**What I would do differently next time**:To make it easier to verify process state transitions step-by-step before introducing UI progress bars, set up an automated testing and trace logging module earlier in the development cycle.
 
 ---
 
